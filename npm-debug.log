@@ -1,0 +1,76 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'seedrandom'
+1 verbose cli ]
+2 info using npm@3.10.10
+3 info using node@v18.14.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData seedrandom
+8 silly fetchNamedPackageData seedrandom
+9 silly mapToRegistry name seedrandom
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'seedrandom',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'seedrandom',
+12 silly mapToRegistry   name: 'seedrandom',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag'
+12 silly mapToRegistry }
+13 silly mapToRegistry uri https://registry.npmjs.org/seedrandom
+14 verbose request uri https://registry.npmjs.org/seedrandom
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 4:40:34 PM
+17 verbose request id bba5e7bc685ae3fe
+18 verbose etag W/"44e3bd30e64d60e430d11e6fb1f863e7"
+19 verbose lastModified Sun, 26 Jun 2022 17:18:23 GMT
+20 http request GET https://registry.npmjs.org/seedrandom
+21 http 304 https://registry.npmjs.org/seedrandom
+22 verbose headers {
+22 verbose headers   date: 'Fri, 08 Dec 2023 16:40:36 GMT',
+22 verbose headers   connection: 'keep-alive',
+22 verbose headers   'cf-ray': '8326737898cb240e-LHR',
+22 verbose headers   'cf-cache-status': 'REVALIDATED',
+22 verbose headers   'cache-control': 'public, max-age=300',
+22 verbose headers   etag: '"44e3bd30e64d60e430d11e6fb1f863e7"',
+22 verbose headers   'last-modified': 'Sun, 26 Jun 2022 17:18:23 GMT',
+22 verbose headers   vary: 'Accept-Encoding',
+22 verbose headers   server: 'cloudflare'
+22 verbose headers }
+23 silly get cb [
+23 silly get   304,
+23 silly get   {
+23 silly get     date: 'Fri, 08 Dec 2023 16:40:36 GMT',
+23 silly get     connection: 'keep-alive',
+23 silly get     'cf-ray': '8326737898cb240e-LHR',
+23 silly get     'cf-cache-status': 'REVALIDATED',
+23 silly get     'cache-control': 'public, max-age=300',
+23 silly get     etag: '"44e3bd30e64d60e430d11e6fb1f863e7"',
+23 silly get     'last-modified': 'Sun, 26 Jun 2022 17:18:23 GMT',
+23 silly get     vary: 'Accept-Encoding',
+23 silly get     server: 'cloudflare'
+23 silly get   }
+23 silly get ]
+24 verbose etag https://registry.npmjs.org/seedrandom from cache
+25 verbose get saving seedrandom to /Users/xliu/.npm/registry.npmjs.org/seedrandom/.cache.json
+26 verbose correctMkdir /Users/xliu/.npm correctMkdir not in flight; initializing
+27 verbose stack TypeError: cb.apply is not a function
+27 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:267:18
+27 verbose stack     at FSReqCallback.oncomplete (node:fs:208:5)
+28 verbose cwd /Users/xliu/Desktop/untitled folder 4
+29 error Darwin 21.6.0
+30 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "seedrandom"
+31 error node v18.14.2
+32 error npm  v3.10.10
+33 error cb.apply is not a function
+34 error If you need help, you may report this error at:
+34 error     <https://github.com/npm/npm/issues>
+35 verbose exit [ 1, true ]
