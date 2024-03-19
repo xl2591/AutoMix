@@ -41,10 +41,8 @@
                 <button id="stop-btn">Stop</button>
                 <button id="training">Tranining</button>
                 <select id="audio-select">
-                    <option value="0" selected="selected">2</option>
-                    <option value="1">4</option>
-                    <option value="2">6</option>
-                    <option value="3">7</option>
+                    <option value="0" selected="selected">6</option>
+                 
                 </select>
             </div>
 
@@ -53,11 +51,10 @@
             <br />
             DRC
             <div>
-                <input id='Threshold' type='range' min=-80 max=0 value=-20>Threshold<br> 
-                <input id='Ratio' type='range' min=1 max=6 value=2>Ratio<br>
-                <input id='Knee' type='range' min=0 max=40 value=0>Knee<br>
-                <input id='Attack'type='range' min=0.005 max=2.5 value='0.1' step='any' id='Attack'>Attack<br> 
-                <input id='Release'type='range' min=0.005 max=3 value='0.1' step='any' id='Release'>Release<br>
+                <input id='Threshold' type='range' min=-20 max=0 value=-20>Threshold<br> 
+                <input id='Ratio' type='range' min=1 max=5 value=0.1>Ratio<br>
+                <input id='Attack'type='range' min=0.005 max=1 value='0.1' step='any' id='Attack'>Attack<br> 
+                <input id='Release'type='range' min=0.005 max=1 value='0.1' step='any' id='Release'>Release<br>
 
             </div>
             <br />
@@ -72,14 +69,14 @@
             <br />
             EQ
             <div>
-                <input id="gain0" type="range" min="-50" max="30" step="5" value="1.0" /> 75hz<br />
-                <input id="gain1" type="range" min="-50" max="30" step="5" value="1.0" />100hz<br />
-                <input id="gain2" type="range" min="-50" max="30" step="5" value="1.0" />200hz<br />
-                <input id="gain3" type="range" min="-50" max="30" step="5" value="1.0" />750hz<br />
-                <input id="gain4" type="range" min="-50" max="30" step="5" value="1.0" />2500hz<br />
-                <input id="gain5" type="range" min="-50" max="30" step="5" value="1.0" />7500hz<br />
-                <input id="gain6" type="range" min="-50" max="30" step="5" value="1.0" />7500hz<br />
-                <input id="gain7" type="range" min="-50" max="30" step="5" value="1.0" />7500hz<br />
+                <input id="gain0" type="range" min="-30" max="30" step="5" value="1.0" /> 60hz<br />
+                <input id="gain1" type="range" min="-30" max="30" step="5" value="1.0" />100hz<br />
+                <input id="gain2" type="range" min="-30" max="30" step="5" value="1.0" />200hz<br />
+                <input id="gain3" type="range" min="-30" max="30" step="5" value="1.0" />400hz<br />
+                <input id="gain4" type="range" min="-30" max="30" step="5" value="1.0" />800hz<br />
+                <input id="gain5" type="range" min="-30" max="30" step="5" value="1.0" />1600hz<br />
+                <input id="gain6" type="range" min="-30" max="30" step="5" value="1.0" />2500hz<br />
+                <input id="gain7" type="range" min="-30" max="30" step="5" value="1.0" />7500hz<br />
             </div>
             <div style="display: flex;flex:1 auto">
         
@@ -88,7 +85,7 @@
                 <div id="chart" style="width: 50vw;height: 40vh;">PannerResult</div> 
 
                 </div>
-                MaskingResult
+                MaskingResult(see consolelog)
             </div>
 
         </div>

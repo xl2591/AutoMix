@@ -9,7 +9,6 @@ window.onload = async () => {
   const panZ0 = document.getElementById("panZ0");
   const Threshold = document.getElementById("Threshold");
   const Ratio = document.getElementById("Ratio");
-  const Knee = document.getElementById("Knee");
   const Attack = document.getElementById("Attack");
   const Release = document.getElementById("Release");
   const gain0 = document.getElementById("gain0");
@@ -29,9 +28,7 @@ window.onload = async () => {
   const totalAudio = document.getElementById("audio");
   const trainingBtn = document.getElementById("training");
   const chartElement = document.getElementById('chart');
-  const canvas0 = document.getElementById("canvas0");
-  const canvas1 = document.getElementById("canvas1");
-  const canvas2 = document.getElementById("canvas2");
+
 
   // const
   let audioURL = []
@@ -39,11 +36,11 @@ window.onload = async () => {
   let audioDirIndex = 0;
   let pannerPosistions = [];
 
-  let sampleRate = 24000;
+  let sampleRate = 48000;
   let recorders = [];
   let totalRecorder;
   var TotalM = [];
-  let iterCnt = 1000;
+  let iterCnt = 100;
   let iter = 0;
   let bestFitness = -1;
   let bestXc = { "DRC": [], "PAN": [], "GAIN": [] };
@@ -56,13 +53,9 @@ window.onload = async () => {
 
 
   const panners = [panX0, panY0, panZ0]
-  // const biquadFilterFreqency = [60, 180, 320, 640, 1280, 3560, 7000, 12000];
-  // const qValues = [1, 0.6, 0.6, 0.3, 0.3, 0.2, 1, 1];
-  const biquadFilterFreqency = [75, 100, 250, 750, 2500, 7500];
-
-   const qValues = [1, 0.6, 0.3, 0.3, 0.2, 1];
-  // const qValues = [0, 0, 0, 0, 0, 0,0,0];
-  const gainsButton = [gain0, gain1, gain2, gain3, gain4, gain5]
+  const biquadFilterFreqency = [60, 100, 200, 400, 800, 1600,2500,7500];
+  const qValues = [1, 0.6, 0.3, 0.3, 0.2, 0.2,0.2,1];
+  const gainsButton = [gain0, gain1, gain2, gain3, gain4, gain5,gain6,gain7]
   const saveaudios = [saveAudio1, saveAudio2, saveAudio3,saveAudio4,saveAudio5,saveAudio6];
 
   initAudio()
@@ -70,7 +63,8 @@ window.onload = async () => {
   function initAudio() {
 
     let audioDir = "/audio"
-    for (let i = 2; i < 8; i += 2) {
+    for (let i = 6; i < 8; i += 2) {
+
       let subDir = audioDir + "/" + i.toString()
 
       let audioList = []
@@ -151,7 +145,7 @@ window.onload = async () => {
 
     Threshold.oninput = () => compressNodes[0].threshold.value = Threshold.value
     Ratio.oninput = () => compressNodes[0].ratio.value = Ratio.value
-    Knee.oninput = () => compressNodes[0].knee.value = Knee.value
+
     Attack.oninput = () => compressNodes[0].attack.value = Attack.value
     Release.oninput = () => compressNodes[0].release.value = Release.value
     // pan node 
@@ -202,7 +196,7 @@ window.onload = async () => {
       panNodes[i].positionZ.value = bestXc.PAN[i][2]
 
       // set gain param
-      for (var j = 0; j < 6; j++) {
+      for (var j = 0; j < 8; j++) {
         peakFilters[i][j].gain.value = bestXc.GAIN[i][j]
       }
     }
@@ -234,7 +228,7 @@ window.onload = async () => {
 
     for (var i = 0; i < inputSize; i++) {
       var emptyArray = new Array();
-      for (var j = 0; j < 6; j++) {
+      for (var j = 0; j < 8; j++) {
         emptyArray.push(bestXc.GAIN[i][j]);
       }
       eqresult.push(emptyArray)
@@ -375,50 +369,7 @@ window.onload = async () => {
     // return mt + md;
   }
 
-  function ProFitness() {
-
-    TotalM = TotalM.map(x => x / bufferMn[0].length);
-    bufferMn.forEach((x) => {
-      console.log(x)
-    })
-    var mb = TotalM[0];
-    var mt = 0;
-    var mdo = 0;
-
-    // var lamita = 1;
-    var laputa = 1;
-
-    // mt
-    TotalM.forEach(x => {
-      mt += x * x;
-    })
-
-    var testw = 0;
-    TotalM.forEach(x => {
-      TotalM.forEach(y => {
-        testw = Math.max(Math.abs(x - y), testw)
-      })
-    })
-    testw = (mt / testw) * 20
-    console.log("testw:" + testw);
-
-    TotalM.forEach((x) => {
-      console.log(x)
-    })
-    // mo
-    var mo = 0;
-    TotalM.forEach(x => {
-      mo = Math.max(Math.abs(mb - x), mo)
-    })
-
-    // mdo
-    for (var i = 0; i < TotalM.length; i++) {
-      var v = mb - (TotalM[i])
-      mdo += (v);
-    }
-    //xc
-    return mt * laputa + mdo * (testw);
-  }
+ 
 
   stopBtn.addEventListener("click", async () => {
 
@@ -537,7 +488,6 @@ window.onload = async () => {
     // DRC slider
     Threshold.oninput = () => compressNodes[0].threshold.value = Threshold.value
     Ratio.oninput = () => compressNodes[0].ratio.value = Ratio.value
-    Knee.oninput = () => compressNodes[0].knee.value = Knee.value
     Attack.oninput = () => compressNodes[0].attack.value = Attack.value
     Release.oninput = () => compressNodes[0].release.value = Release.value
 
@@ -603,21 +553,7 @@ window.onload = async () => {
     var inputSize = audioURL[audioDirIndex].length;
 
     for (var i = 0; i < inputSize; i++) {
-      // // set DRC param
-      // compressNodes[i].threshold.value = getRandom(DRCParameterRangeThreshold.min, DRCParameterRangeThreshold.max, getSeed())
-      // compressNodes[i].ratio.value = getRandom(DRCParameterRangeRatio.min, DRCParameterRangeRatio.max, getSeed())
-      // compressNodes[i].attack.value = getRandom(DRCParameterRangeAttack.min, DRCParameterRangeAttack.max, getSeed())
-      // compressNodes[i].release.value = getRandom(DRCParameterRangeRelease.min, DRCParameterRangeRelease.max, getSeed())
 
-      // // set paner param
-      // panNodes[i].positionX.value = getRandom(PanParameterRange.min, PanParameterRange.max, getSeed())
-      // panNodes[i].positionY.value = getRandom(PanParameterRange.min, PanParameterRange.max, getSeed())
-      // panNodes[i].positionZ.value = getRandom(PanParameterRange.min, PanParameterRange.max, getSeed())
-
-      // // set gain param
-      // for (var j = 0; j < 6; j++) {
-      //   peakFilters[i][j].gain.value = getRandom(EqParameterRange.min, EqParameterRange.max, getSeed())
-      // }
 
       compressNodes[i].threshold.value = getRandom(DRCParameterRangeThreshold.min, DRCParameterRangeThreshold.max,3)
       compressNodes[i].ratio.value = getRandom(DRCParameterRangeRatio.min, DRCParameterRangeRatio.max,1)
@@ -633,7 +569,7 @@ window.onload = async () => {
       // set gain param
       //console.log(peakFilters[i])
 
-      for (var j = 0; j < 6; j++) {
+      for (var j = 0; j < 8; j++) {
         peakFilters[i][j].gain.value = getRandom(EqParameterRange.min, EqParameterRange.max,4)
       }
     }
@@ -707,7 +643,7 @@ window.onload = async () => {
     panY0.value = panNodes[0].positionY.value
     panZ0.value = panNodes[0].positionZ.value
 
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 8; i++) {
       gainsButton[i].value = peakFilters[0][i].gain.value
     }
   }

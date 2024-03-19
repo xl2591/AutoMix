@@ -26,7 +26,7 @@ class PEAQ extends AudioWorkletProcessor {
     this.aL = Math.pow(10, (-2.7 * this.delta));
     this.Amax = 32768;
     this.LP = 92;
-    this.kfs = 24000; //Fs
+    this.kfs = 48000; //Fs
     this.NF = 2048; //long window
     this.TOF = 0.000001
     this.Tmax = 20;
@@ -63,21 +63,7 @@ class PEAQ extends AudioWorkletProcessor {
     // critical bands
     this.Nc = 109
     this.EfPre = new Array(this.Nc).fill(0)
-    // this.AccEfPre = new Array(this.inputSize)
-    // for (var i = 0; i < this.inputSize; i++) {
-    //   this.AccEfPre[i] = new Array(this.inputChanelSize);
-    //   for (var j = 0; j < this.inputChanelSize; j++) {
-    //     this.AccEfPre[i][j] = new Array(this.Nc).fill(0);
-    //   }
-    // }
 
-    // this.EfPre = new Array(this.inputSize)
-    // for (var i = 0; i < this.inputSize; i++) {
-    //   this.EfPre[i] = new Array(this.inputChanelSize);
-    //   for (var j = 0; j < this.inputChanelSize; j++) {
-    //     this.EfPre[i][j] = new Array(this.Nc).fill(0);
-    //   }
-    // }
 
 
     this.reset()

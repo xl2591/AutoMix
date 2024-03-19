@@ -3,7 +3,7 @@ class levelBalance extends AudioWorkletProcessor {
 
   constructor(options) {
     super();
-   this.kfs = 24000;
+   this.kfs = 48000;
     this.cnt =0;
     this.tmp = []
     this.tt = 0
@@ -24,7 +24,7 @@ class levelBalance extends AudioWorkletProcessor {
     this.smoothAlpha = 0.8;
 
     // peak lufs
-    this.fixedLufs = -31;
+    this.fixedLufs = -23;
     this.peakFadeRate = 1.000;
     this.accumulatePeakLuf = new Array(this.inputSize);
     for (var i = 0; i < this.accumulatePeakLuf.length; i++) {
