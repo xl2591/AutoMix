@@ -180,7 +180,7 @@ window.onload = async () => {
     //Gainnode 
     var inChannelCount = new Array(inputSize);
     var outChannelCount = new Array(inputSize);
-    outChannelCount.fill(1);//声道个数
+    outChannelCount.fill(1);//
 
     // set bestXC
     for (var i = 0; i < inputSize; i++) {
@@ -202,7 +202,7 @@ window.onload = async () => {
     }
 
     // visualization
-    // 获取chart元素
+
     var pannnerresult = new Array();
     for (var i = 0; i < inputSize; i++) {
       pannnerresult.push(bestXc.PAN[i]);
@@ -252,7 +252,7 @@ window.onload = async () => {
     }
 
 
-    // 创建echarts实例
+  
     let chart = echarts.init(chartElement);
     chart.setOption({
       grid3D: {
@@ -418,8 +418,8 @@ window.onload = async () => {
 
     var inChannelCount = new Array(inputSize);
     var outChannelCount = new Array(inputSize);
-    inChannelCount.fill(1); //声道个数
-    outChannelCount.fill(1); //声道个数
+    inChannelCount.fill(1); 
+    outChannelCount.fill(1); 
 
     // level node 
     const gainNode = new AudioWorkletNode(context, "levelBalance", {
