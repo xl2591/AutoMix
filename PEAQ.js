@@ -372,30 +372,16 @@ class PEAQ extends AudioWorkletProcessor {
   PQ_SpreadCB = function (E, Bs) {
     var e = 0.4;
     var Nc = E.length;
-    // var dz = 1.0 / Nc;
+
     var dz = 0.25;
     var aUCEe = Array(Nc).fill(0);
     var Ene = Array(Nc).fill(0);;
     var Es = Array(Nc).fill(0);;
 
-    // // Calculate fc
-    // for (var i = 0; i < Nc; i++) {
-    //   this.fc[i] = 25 * (i + 1) + 100;
-    // }
-
     // Calculate energy-dependent terms
     var aL = Math.pow(10, 2.7 * dz);
 
-    //original version
-    // for (var l = 0; l < Nc; l++) {
-    //   var aUC = Math.pow(10, (-2.4 - 23 / this.fc[l]) * dz);
-    //   var aUCE = aUC * Math.pow(E[l], 0.2 * dz);
-    //   var gIL = (1 - Math.pow(aL, -(l + 1))) / (1 - Math.pow(aL, -1));
-    //   var gIU = (1 - Math.pow(aUCE, Nc - l)) / (1 - aUCE);
-    //   var En = E[l] / (gIL + gIU - 1);
-    //   aUCEe[l] = Math.pow(aUCE, e);
-    //   Ene[l] = Math.pow(En, e);
-    // }
+
 
     for (var l = 0; l < Nc; l++) {
       var aUC = Math.pow(10, (-2.4 - 23 / this.fc[l]) * dz);
@@ -537,10 +523,6 @@ class PEAQ extends AudioWorkletProcessor {
     }
     newinputs = newinputs.slice(0, this.NF)
 
-    // var tt = new Array(newinputs.length);
-    // for(var i = 0;i < newinputs.length;i++) {
-    //   tt[i] = newinputs[i];
-    // }
 
 
     //add hanning window 
@@ -581,7 +563,7 @@ class PEAQ extends AudioWorkletProcessor {
     this.processing = false;
   }
 
-  //process 参考adaeq
+  
   //input [][][] inputs number, input channel(left and right), input time domain dtat
   process(inputs, outputs, parameters) {
 
@@ -607,19 +589,14 @@ class PEAQ extends AudioWorkletProcessor {
 
           var pcmData = new Array(inputs[i][ch].length)
           for (let j = 0; j < inputs[i][ch].length; j++) {
-            // 填充 PCM 数据，例如 16 位 PCM 数据在 -32768 到 32767 之间
+            // trasfer pcm format
             pcmData[j] = inputs[i][ch][j] * 32768;
           }
-          // if (Math.max(...pcmData) == 0 && Math.min(...pcmData) == 0) {
-          //   // console.log("inputs " + i + " silence 0!!!!!!!!!!")
-          //   continue
-          // }
+     
 
           this.bufferInput[i][ch] = this.array32Concat(this.bufferInput[i][ch], pcmData)
 
-          // if (this.bufferInput[i][ch].length > this.maxBufferLen && this.cnt > 600) {
-          //     return false;
-          // }
+    
         }
       }
     }
@@ -672,8 +649,7 @@ class PEAQ extends AudioWorkletProcessor {
 
           energy[i][ch] = this.peaqWork(this.bufferInput[i][ch]).ef;
 
-          //console.log(maskRes[i][ch])
-          //console.log(energy[i][ch])
+          
           //masking mertcis
           MSR[i][ch] = [];
 
@@ -705,8 +681,7 @@ class PEAQ extends AudioWorkletProcessor {
           this.port.postMessage({ "key": i, "mask": maskRes[i][j], "energy": energy[i][j], "Mn": Mn[i][0] + Mn[i][1], "MSR": MSR[i][j] });
         }
 
-       // console.log(Mn[i][0] + Mn[i][1])
-      //  console.log("+============")
+   
 
         for (var j = 0; j < inputs[i].length; j++) {
           if (bufferOk[j]) {
@@ -715,18 +690,7 @@ class PEAQ extends AudioWorkletProcessor {
           }
         }
       }
-    
-    // for (var i = 0; i < inputs.length; i++) {
 
-    //   if (inputs[i] == undefined || inputs[i].length == 0 || outputs[i]) {
-    //     continue
-    //   }
-    //   for (var j = 0; j < inputs[i].length; j++) {
-    //     if (inputs[i][j] == undefined || outputs[i][j] == undefined) {
-    //       continue
-    //     }
-    //   }
-    // }
 
     return true;
   }

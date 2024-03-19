@@ -116,10 +116,6 @@ class levelBalance extends AudioWorkletProcessor {
           }
 
 
-          // if(iterTime>this.cnt){
-          //   return flase
-          // }
-          // console.log(gain)
         }
 
       }
