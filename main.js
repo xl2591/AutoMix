@@ -532,7 +532,7 @@ window.onload = async () => {
     testv = Math.random();
     // const randomInteger = Math.floor(Math.random() *(maxV - minV) / step) + 1;
    const randomInteger = Math.floor(testv*(maxV - minV) / step) + 1;
-   console.log("prng"+testv);   
+   //console.log("prng"+testv);   
     
      return randomInteger * step + minV;
   }
