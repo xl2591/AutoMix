@@ -3,8 +3,20 @@
 
 
 
+Install Dependencies
 
-Before running the code, ensure that Node.js is installed. If not, please visit the official Node.js website to download and install it.
+Before running the code, ensure that all necessary dependencies are installed. To do so, follow these steps:
+
+Open a command-line terminal and navigate to the project directory.
+Run the following command to install the required dependencies:
+
+‘npm install’
+
+This will install all the dependencies defined in the package.json file.
+
+
+Next step:
+ensure that Node.js is installed. If not, please visit the official Node.js website to download and install it.
 
 To start the system, follow these steps:
 
