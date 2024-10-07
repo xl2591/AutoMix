@@ -3,7 +3,7 @@
 
 
 
-Install Dependencies
+#Install Dependencies
 
 Before running the code, ensure that all necessary dependencies are installed. To do so, follow these steps:
 
@@ -15,7 +15,7 @@ Run the following command to install the required dependencies:
 This will install all the dependencies defined in the package.json file.
 
 
-Next step:
+#Next step:
 ensure that Node.js is installed. If not, please visit the official Node.js website to download and install it.
 
 To start the system, follow these steps:
