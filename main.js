@@ -153,7 +153,8 @@ window.onload = async () => {
     for (var i = 0; i < inputSize; i++) {
       var panner = context.createPanner()
       panner.refDistance = 0.5
-      panner.panningModel = 'HRTF';
+      //panner.panningModel = 'HRTF';
+      panner.panningModel = 'equalpower';
       panNodes.push(panner);
     }
 
@@ -496,7 +497,8 @@ window.onload = async () => {
     for (var i = 0; i < inputSize; i++) {
       var panner = context.createPanner()
       panner.refDistance = 0.5
-      panner.panningModel = 'HRTF';
+      //panner.panningModel = 'HRTF';
+      panner.panningModel = 'equalpower';
       panNodes.push(panner);
     }
 
@@ -610,7 +612,7 @@ window.onload = async () => {
         training()
 
       } else {
-        alert("Parameter opt finish!" + "bestfitness:" + bestFitness);
+        alert("Parameter opt finish! HRTF changed" + "bestfitness:" + bestFitness);
       }
     };
 
