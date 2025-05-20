@@ -87,3 +87,11 @@ On the UI page:
 
 - 🔹 **Click `Stop`**:  
   Ends playback and records the enhanced output.
+
+## License
+
+This code is provided for research purposes only.  
+Non-commercial use is permitted.  
+Commercial use, redistribution, or modification of this code requires prior written permission.
+
+Please cite the associated paper if you use this code in your work.
