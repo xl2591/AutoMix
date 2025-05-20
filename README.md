@@ -22,13 +22,13 @@ When multiple people speak simultaneously, **auditory masking** and signal inter
 <img src="figure/Workflow.jpg" alt="Workflow" width="400" height="auto">
 
 
----
+<!-- ---
 
 ## 📜 Abstract
 
 > The simultaneous presence of multiple audio signals can lead to information loss due to auditory masking and interference, often resulting in diminished signal clarity. We propose a speech enhancement system designed to present multiple tracks of speech information with reduced auditory masking, thereby enabling more effective discernment of multiple simultaneous talkers. The system evaluates auditory masking using the ITU-R BS.1387 Perceptual Evaluation of Audio Quality (PEAQ) model along with ideal mask ratio metrics. To achieve optimal results, a combined iterative Harmony Search algorithm and integer optimization are employed, applying audio effects such as level balancing, equalization, dynamic range compression, and spatialization, aimed at minimizing masking. Objective and subjective listening tests demonstrate that the proposed system performs competitively against mixes created by professional sound engineers and surpasses existing auto-mixing systems.
 
----
+--- -->
 
 ## 📦 Installation
 
